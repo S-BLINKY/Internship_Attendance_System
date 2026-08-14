@@ -1,0 +1,6 @@
+<?php
+require_once __DIR__ . "/../includes/function.php";
+session_start();
+session_unset();
+redirect
+?>
