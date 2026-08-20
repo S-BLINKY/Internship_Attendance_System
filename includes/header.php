@@ -18,8 +18,8 @@ require_once __DIR__ . '/function.php';
             <a class="navbar-brand" href="../dashboard.php">Internship Management System</a>
             <?php if (isLoggedIn()): ?>
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="../dashboard.php">Dashboard</a>
-                    <a class="nav-link" href="../interns/index.php">Interns</a>
+                    <a class="nav-link" href="/INTERNSHIP_MANAGEMENT_SYSTEM/dashboard.php">Dashboard</a>
+                    <a class="nav-link" href="/INTERNSHIP_MANAGEMENT_SYSTEM/interns/index.php">Interns</a>
                     <a class="nav-link" href="../projects/index.php">Projects</a>
                     <a class="nav-link" href="../attendance/index.php">Attendance</a>
                     <a class="nav-link" href="../auth/logout.php">Logout</a>
