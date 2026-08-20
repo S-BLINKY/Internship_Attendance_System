@@ -14,5 +14,5 @@ if (!$conn){
 
 // study more about charsets and their codes eg utf8
 mysqli_set_charset($conn, "utf8");
-echo "Connected succefully";
+// echo "Connected succefully";
 ?>

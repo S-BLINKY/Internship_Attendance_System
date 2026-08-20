@@ -3,7 +3,6 @@ require_once __DIR__ . '/../includes/auth_chek.php';
 require_once __DIR__ . '/../config/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id          =(INT)($_POST['id']);
     $intern_code = cleanInput($_POST['intern_code']);
     $full_name   = cleanInput($_POST['full_name']);
     $email       = cleanInput($_POST['email']);
@@ -20,23 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert using prepared statement
-    $sql = "UPDATE interns SET 
-    intern_code =?,
-     full_name =?, 
-     email =?, 
-     phone =?,
-    status =? 
-    WHERE id=?" ;
-
+    $sql = "INSERT INTO interns (intern_code, full_name, email, phone, department_id, start_date, end_date, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssssi", $intern_code, $full_name, $email, $phone, $status, $id);
+    mysqli_stmt_bind_param($stmt, "ssssssss", $intern_code, $full_name, $email, $phone, $department_id, $start_date, $end_date, $status);
     $result = mysqli_stmt_execute($stmt);
     if ($result) {
-        setMessage("Intern updated successfully!");
+        setMessage("Intern added successfully!");
         redirect("index.php");
     } else {
         setMessage("Error: " . mysqli_error($conn), "danger");
-                redirect("edit.php");
+        redirect("create.php");
     }
 } else {
     redirect("create.php");
